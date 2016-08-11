@@ -1,0 +1,49 @@
+{
+   "api_console_project_id": "188125302027",
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "images/38.png",
+         "38": "images/38.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "__MSG_extName__"
+   },
+   "container": "GOOGLE_DRIVE",
+   "content_scripts": [ {
+      "css": [ "stylesheets/selected.css" ],
+      "exclude_globs": [ "http://getsmartshot.com/save-local-flash/SaveToDisk.html" ],
+      "js": [ "javascripts/libs/jquery-1.7.2.min.js", "javascripts/content_script.js", "javascripts/libs/dragresize.js", "javascripts/jquery.draggable.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": true,
+      "js": [ "javascripts/save-content.js" ],
+      "matches": [ "http://getsmartshot.com/save-local-flash/SaveToDisk.html" ],
+      "run_at": "document_end"
+   }, {
+      "js": [ "oauth2/oauth2_inject.js" ],
+      "matches": [ "http://www.google.co.uk/robots.txt*" ],
+      "run_at": "document_start"
+   } ],
+   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://connect.facebook.net https://platform.twitter.com; object-src 'self'",
+   "default_locale": "en",
+   "description": "__MSG_extDesc__",
+   "icons": {
+      "128": "images/128.png",
+      "16": "images/38.png",
+      "32": "images/38.png",
+      "48": "images/48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0mdefaEMZQ/tzUgduTW9uW7EUqrK9Q93R3VNAO+RR6+fNn5RVHphZg8H+o73tqCJ74jlB8ntAXuvkg9hcVZt1ydW5NbiYVIJi2PvjibOeeZqmA+GFnHq4LU9u7/n+PKyV6m7+WPE+O724C/myE3tYpA6XLmJuTK0yqiafoAJyNHCcR8JcbmpNlyiGGictYfSWPX5TjE7FfqBBDWLiR24S5BCAiNB8liPAk/n7Y2B2WIzTcKTwleem41QLGlqvpOr6YmBfORj4C9hwrRoGyBuVVpF3GRycXBft1wLCm0SHjtkrtfQbc5dMccWwV9FXfaDxltyXFZ9QfnzQPcwytJggwIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "6.0",
+   "name": "__MSG_extName__",
+   "offline_enabled": true,
+   "permissions": [ "tabs", "\u003Call_urls>", "http://*/*", "https://*/*", "webRequest", "webRequestBlocking", "idle", "storage", "webNavigation", "unlimitedStorage", "desktopCapture", "cookies" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.1.2",
+   "web_accessible_resources": [ "images/success.gif", "images/clear.png", "images/icon19.png", "chrome-extension://edjbamdongkhmagbpppagfjbcojajeae/#" ]
+}

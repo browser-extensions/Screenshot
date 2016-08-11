@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smartshot Editor</title>
+    <meta charset="utf-8">
+    <meta name="twitter:widgets:csp" content="on">
+    <link href="stylesheets/selected.css" rel="stylesheet" type="text/css">
+    <link href="stylesheets/main.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/editor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="javascripts/libs/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.helper.js"></script>
+    <script type="text/javascript" src="javascripts/detect.js"></script>
+    <script type="text/javascript" src="javascripts/libs/jquery-ui-1.8.custom.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.draggable-edit.js"></script>
+    <script type="text/javascript" src="javascripts/libs/jquery.ui.resizable.min.js"></script>
+    <script type="text/javascript" src="javascripts/libs/dragresize.js"></script>
+    <script type="text/javascript" src="javascripts/jquery-autogrowinput.js"></script>
+    <script type="text/javascript" src="javascripts/jqModal.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.md5.js"></script>
+    <script type="text/javascript" src="javascripts/libs/md5.js"></script>
+    <script type="text/javascript" src="oauth2/oauth2.js"></script>
+    <script type="text/javascript" src="javascripts/libs/swfobject.js"></script>
+    <script type="text/javascript" src="javascripts/libs/diigo-image-annotator.min.js"></script>
+    <script type="text/javascript" src="javascripts/libs/color-thief.min.js"></script>
+    <script type="text/javascript" src="javascripts/edit.js"></script>
+    
+    <script type="text/javascript" src="javascripts/imgur/editor.js"></script>
+    <script type="text/javascript" src="javascripts/imgur/common.js"></script>
+
+
+</head>
+
+<body class="edit_page">
+    <script type="text/javascript" src="javascripts/cga.js"></script>
+    <div class="topbar">
+ <div id="banner">
+     
+     <ul>
+     <a class="navbar-brand banner3" href="http://getsmartshot.com" target="_blank">Smartshot</a>
+     </ul>
+     
+
+     </div>
+           
+            
+            
+            
+    <div id="tool-panel">
+        <div class="toolbar active inner-container">
+            <div class="tools">
+                <div class="tool-btn single-btn" data-action="crop" title="Crop"><b></b></div>
+                <div class="tool-sep"></div>
+                <div class="tool-btn single-btn shape-btn" data-shape="curve" title="Pen"><b></b></div>
+                <div class="tool-btn multi-btn">
+                    <div class="tool-btn single-btn shape-btn" data-shape="rect" title="Rectangle & Ellipse"><b></b></div>
+                    <div class="multi-btn-arrow"></div>
+                    <div class="multi-btn-dropdown">
+                        <div class="tool-btn sub-single-btn" data-shape="rect"><b></b></div>
+                        <div class="tool-btn sub-single-btn" data-shape="ellipse"><b></b></div>
+                    </div>
+                </div>
+                <div class="tool-btn multi-btn" title="Arrow">
+                    <div class="tool-btn single-btn shape-btn" data-shape="line_arrow"><b></b></div>
+                    <div class="multi-btn-arrow"></div>
+                    <div class="multi-btn-dropdown">
+                        <div class="tool-btn sub-single-btn" data-shape="line_arrow"><b></b></div>
+                        <div class="tool-btn sub-single-btn" data-shape="bezier_arrow"><b></b></div>
+                        <div class="tool-btn sub-single-btn" data-shape="line"><b></b></div>
+                    </div>
+                </div>
+                <div class="tool-btn single-btn shape-btn" data-shape="Text" title="Text"><b></b></div>
+                <div class="tool-btn single-btn shape-btn" data-shape="rect_blur" title="Blur"><b></b></div>
+                <div class="tool-btn single-btn shape-btn" data-shape="highlight" title="Highlight"><b></b></div>
+                <div class="tool-sep"></div>
+                <div class="tool-select tool-color-picker">
+                    <div class="tool-current-color current" id="tool-current-color" data-color="#f00"></div>
+                    <div class="panel">
+                        
+                        <div class="color-item" data-color="#562E2E"></div>
+                        <div class="color-item" data-color="#41516B"></div>
+                        <div class="color-item" data-color="#FF4190"></div>
+                        <div class="color-item" data-color="#009688"></div>
+                        <div class="color-item" data-color="#673AB7"></div>
+                        <div class="color-item" data-color="#00903A"></div>
+                        <div class="color-item" data-color="#E06BE2"></div>
+                        <div class="color-item" data-color="#19cf86"></div>
+                        <div class="color-item" data-color="#60F"></div>
+                        <div class="color-item" data-color="#09F"></div>
+                        <div class="color-item" data-color="#06C"></div>
+                        <div class="color-item" data-color="#FF0"></div>
+                        <div class="color-item" data-color="#F60"></div>
+                        <div class="color-item" data-color="#C0F"></div>
+                        <div class="color-item" data-color="#966"></div>
+                        <div class="color-item" data-color="#999"></div>
+                        <div class="color-item" data-color="#00F"></div>
+                        <div class="color-item" data-color="#0FF"></div>
+                        <div class="color-item" data-color="#9F3"></div>
+                        <div class="color-item" data-color="#FC0"></div>
+                        <div class="color-item" data-color="#F00"></div>
+                        <div class="color-item" data-color="#933"></div>
+                        <div class="color-item" data-color="#000"></div>
+                        <div class="color-item" data-color="#FFF"></div>
+                    </div>
+                </div>
+                <div class="tool-select tool-pen-width">
+                    <div class="tool-current-width current" id="tool-current-width" data-width="4"><b></b> <span>4px</span></div>
+                    <div class="panel">
+                        <div class="pen-width-item" data-width="2"><b></b> <span>2px</span></div>
+                        <div class="pen-width-item" data-width="4"><b></b> <span>4px</span></div>
+                        <div class="pen-width-item" data-width="6"><b></b> <span>6px</span></div>
+                        <div class="pen-width-item" data-width="8"><b></b> <span>8px</span></div>
+                        <div class="pen-width-item" data-width="16"><b></b> <span>16px</span></div>
+                    </div>
+                </div>
+                <div class="tool-select tool-font-family">
+                    <div class="tool-current-font-family current" id="tool-current-font-family"><span>Times New Rome</span></div>
+                    <div class="panel">
+                        <div class="font-f-item" data-ff="Times New Rome">Times New Rome</div>
+                        <div class="font-f-item" data-ff="Arial">Arial</div>
+                        <div class="font-f-item" data-ff="Craft Girls">Craft Girls</div>
+                        <div class="font-f-item" data-ff="Limelight">Limelight</div>
+                        <div class="font-f-item" data-ff="Lobster">Lobster</div>
+                        <div class="font-f-item" data-ff="Anton">Anton</div>
+                        <div class="font-f-item" data-ff="Chewy">Chewy</div>
+                        <div class="font-f-item" data-ff="Frijole">Frijole</div>
+                        <div class="font-f-item" data-ff="Spirax">Spirax</div>
+                        <div class="font-f-item" data-ff="Dancing Script">Dancing Script</div>
+                        <div class="font-f-item" data-ff="Changa One">Changa One</div>
+                        <div class="font-f-item" data-ff="Griffy">Griffy</div>
+                    </div>
+                </div>
+                <div class="tool-select tool-font-size">
+                    <div class="tool-current-font-size current" data-fs="14" id="tool-current-font-size">24px</div>
+                    <div class="panel">
+                        <div class="font-s-item" data-fs="12">14px</div>
+                        <div class="font-s-item" data-fs="18">18px</div>
+                        <div class="font-s-item" data-fs="24">24px</div>
+                        <div class="font-s-item" data-fs="36">36px</div>
+                        <div class="font-s-item" data-fs="48">48px</div>
+                    </div>
+                </div>
+                <div class="tool-sep"></div>
+                <div class="tool-btn single-btn disabled" data-action="undo" title="Undo"><b></b></div>
+                <div class="tool-btn single-btn disabled" data-action="redo" title="Redo"><b></b></div>
+                <div class="tool-btn single-btn disabled" data-action="clear" title="Clear"><b></b></div>
+                <div class="tool-btn single-btn disabled" data-action="deleteSelected" title="Delete selected"><b></b></div>
+                <div class="tool-sep"></div>
+                <div class="zoom-area">
+                    <div class="tool-btn single-btn" data-action="zoom-in" title="Zoom in"><b></b></div>
+                    <div class="tool-btn single-btn" data-action="zoom-out" title="Zoom out"><b></b></div>
+                    <div class="zoom-tip">Zoom: <span class="zoom-level">75%</span>
+                        <div class="restore-zoom" id="restore-zoom">Reset to default</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tool-action-btn primary-btn" id="save-btn">Done</div>
+            <div class="crop-area">
+                <div class="tool-action-btn2 primary-btn2" id="crop-btn">Crop</div>
+                <div class="tool-action-btn2 primary-btn2" id="crop-cancel-btn">Cancel</div>
+                <div id="crop-dimension">
+                    <div>Width:
+                        <input type="text" id="cd-width" class="cd-input">
+                    </div>
+                    <div>Height:
+                        <input id="cd-height" type="text" class="cd-input">
+                    </div>
+                </div>
+
+            </div>
+                        </div>
+        </div>
+
+        <div id="tip"><span></span></div>
+    </div>
+    <div id="edit-area">
+        <div id="saveWrapper">
+            <div id="saveImageOuter">
+                <div id="save_image_wrapper">
+                    <div><span id="image_loader" class="i18n"></span>
+                        <div id="print_area"><img id="save-image" alt="save image"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="saveTipOuter">
+                <div id="save-tip">
+
+                    
+                    <div class="savebuttons">
+
+                            <button class="main_btn" id="re-edit"><i class="save_image_icon"></i><span>Back</span>
+                            </button>
+                            <button class="main_btn download"><i class="downloadicon"></i><span>Download</span>
+                            <div id="save-flash-btn"></div>
+                            </button>
+                            <button class="l-s-btn print main_btn"><i class="printericon"></i><span>Print Image</span>
+                            </button>
+
+                
+                            <div id="uploadWebsitesWrapper">
+                            <ul id="uploadWebsites" style="list-style-type:none">
+                            
+                            <a class="uploadWebsite" site="imgur" href="#">
+                            <button class="imgur main_btn"><i class="imguricon"></i><span>Save to Imgur</span>
+                            </button></a>
+                                
+                            <a class="uploadWebsite" site="ultraimg" href="#">
+                            <button class="imgur main_btn"><i class="mysiteicon"></i><span>Save to Smartshot</span>
+                            </button></a>
+                                
+                            </ul>
+                            </div>
+
+
+                            <ul id="saveOptionList">
+                            <ul id="saveOptionContent">
+                            <li class="sgdrive clear">
+                            <div id="gdriveImageName" class="saveForm">
+                            <button id="gdrive-save" class="button save driveicon main_btn">Save to Google</button>
+                            </div>
+                            </ul>
+                            </li>
+                            </ul>
+                            </ul>
+                            </div>
+            
+            
+                            <span id="uploadProcessing" class="nobr" style="display:none">
+                            <div id="uploading"></div>
+                            </span>
+                
+                            <div id="gdrive-share-link" class="shareLink">
+                            <input type="text">
+                            <a id="gdrive-signout">Sign out</a>
+                            </div>
+                
+                            <ul id="shareLinks" class="hide" gaCategory="share">
+                            <li>
+                            <input id='imageURL' type='text'>
+                            </li>
+                            </ul>
+            
+                            <div style="text-align:left">
+                            <span id="uploadProcessingDone" class="nobr" style="display:none" msg="readyToShare"></span>
+                            </div>
+            
+            
+                
+                    <div id="legacySave">
+                        <h2 id="save_congrats" class="i18n"></h2>
+                        <h3 id="save_howto" class="i18n"></h3><a href="" id="privateLink" target="_blank"></a>
+                        <dl><dt id="save_local" class="i18n"></dt>
+                            <dd><a id="save_button"><span></span></a></dd><dt id="share" class="i18n"></dt>
+                          <dd></dd>
+                        </dl>
+                </div>         
+                    
+       </div>
+       </div>
+    <div id="feedback">
+        <h class="linkcolor2">Smartshot - All right reserved © 2016</h> <a class="linkcolor" href="http://getsmartshot.com/privacy" target="_blank">Privacy Policy</a> <a class="linkcolor" href="http://getsmartshot.com/contact" target="_blank">Contact us</a> <a class="linkcolor" href="http://blog.getsmartshot.com" target="_blank">Blog</a>
+		    </div>
+        </div>
+        
+        <canvas id="show-canvas" width="0" height="0"></canvas>
+        <div id="cropdiv" class="drsElement drsMoveHandle" style="z-index:900;left: 0px; top: 0px; width: 0px; height: 0px; background: rgba(0,0,0,0);display:none; text-align: center;position:absolute;outline:1px dashed #777;cursor:move"><span id="crop_size"></span></div><span id="crop-tip"></span>
+        <div class="editor-outer-container" id="editor-outer-container">
+            <div class="editor-container">
+                <canvas class="doodle-canvas"></canvas>
+                <canvas class="layer-canvas"></canvas>
+                <div class="editor-outer-textarea">
+                    <textarea class="editor-textarea"></textarea>
+                </div>
+                <div class="editor-list-dialog">Number:
+                    <input type="number">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="w-wrapper" id="w-wrapper"></div>
+   
+   
+</body>
+
+</html>

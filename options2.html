@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="options_page">
+
+<head>
+    <title>Options</title>
+    <link href="stylesheets/options2.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="javascripts/libs/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="javascripts/detect.js"></script>
+    <script type="text/javascript" src="javascripts/options2.js"></script>
+</head>
+
+<body class="options_page">
+    <script type="text/javascript" src="javascripts/cga.js"></script>
+    <div id="wrapper">
+                </div>
+    </div>
+        <div class="widjet-popup-filter cf macoshackresize" style="padding-top: 23px;">
+                        <a href="popup.html">
+<img src="images/back.png" style="position: relative;  float: left;width: 22px;margin: -13px;margin-left: -5px;">
+            </a>
+    </div>
+        <div id="options">
+            
+            <fieldset id="format">
+                <input type="radio" name="format" value="PNG" id="png" checked="checked">
+                <label for="png">PNG</label>
+                <input type="radio" name="format" value="JPG" id="jpg">
+                <label for="jpg">JPG</label>
+            </fieldset>
+            <fieldset id="delay_sec">
+                <input type="radio" name="delay_sec" value="3" id="delay_sec_3" data-sec="3" checked="checked">
+                <label for="delay_sec_3">3s</label>
+                <input type="radio" name="delay_sec" value="5" id="delay_sec_5" data-sec="5">
+                <label for="delay_sec_5">5s</label>
+            </fieldset>
+            <fieldset>
+                <table id="shortcuts_table">
+                    <tbody id="menu_shortcuts">
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="visible" id="visible">
+                                <label for="visible">Capture Visible</label>
+                            </td>
+                            <td class="select"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="selected" id="selected">
+                                <label for="selected">Capture Selected Area</label>
+                            </td>
+                            <td class="select"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="entire" id="entire">
+                                <label for="entire">Capture Entire</label>
+                            </td>
+                            <td class="select"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            
+            <button id="action_panel" class="tool-action-btn2 primary-btn2" value="Save">Save</button> 
+            <div id="tip"><span></span></div>
+
+</body>
+
+</html>
